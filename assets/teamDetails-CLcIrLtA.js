@@ -35,7 +35,7 @@
     fetch(link.href, fetchOpts);
   }
 })();
-API_KEY = "07dda17efb811c96aba7340d0afd5519";
+const API_KEY = "07dda17efb811c96aba7340d0afd5519";
 const API_CONFIG = {
   BASE_URL: "https://v3.football.api-sports.io",
   API_KEY,
@@ -43,6 +43,9 @@ const API_CONFIG = {
   DEFAULT_SEASON: 2023,
   AVAILABLE_SEASONS: [2021, 2022, 2023]
 };
+function selectYear(year) {
+  window.location.href = `/sportsProject/team.html?year=${year}`;
+}
 function handleTeamClick(teamId, teamName, leagueId, season) {
   const parsedLeagueId = parseInt(leagueId);
   const parsedSeason = parseInt(season);
@@ -203,3 +206,6 @@ if (window.location.pathname.includes("team-details.html")) {
     fetchTeams(selectedYear);
   });
 }
+window.API_CONFIG = API_CONFIG;
+window.selectYear = selectYear;
+window.handleTeamClick = handleTeamClick;
