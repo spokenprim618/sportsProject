@@ -37,7 +37,7 @@
 })();
 const API_CONFIG = {
   BASE_URL: "https://v3.football.api-sports.io",
-  API_KEY: void 0,
+  API_KEY: "07dda17efb811c96aba7340d0afd5519",
   DEFAULT_LEAGUE: 39,
   DEFAULT_SEASON: 2023,
   AVAILABLE_SEASONS: [2021, 2022, 2023]
@@ -102,7 +102,7 @@ function loadTeamDetails() {
   const leagueId = params.get("leagueId") || API_CONFIG.DEFAULT_LEAGUE;
   const season = params.get("season") || API_CONFIG.DEFAULT_SEASON;
   if (!teamId || !teamName) {
-    window.location.href = "/sportsProject/src/team.html";
+    window.location.href = `/sportsProject/src/team.html?year=${season}`;
     return;
   }
   const container = document.createElement("div");
@@ -116,7 +116,7 @@ function loadTeamDetails() {
         <p>Loading ${season} season statistics...</p>
       </div>
     </div>
-    <a href="/sportsProject/src/team.html" class="button">Back to teams</a>
+    <a href="/sportsProject/src/team.html?year=${season}" class="button">Back to teams</a>
   `;
   document.body.appendChild(container);
   fetchTeamStatistics(teamId, leagueId, season);
