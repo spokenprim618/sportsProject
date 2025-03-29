@@ -91,7 +91,12 @@ function createTeamCard(teamData, container, year) {
     </div>
   `;
   card.addEventListener("click", () => {
-    handleTeamClick(teamData.id, teamData.name, API_CONFIG.DEFAULT_LEAGUE, year);
+    handleTeamClick(
+      teamData.id,
+      teamData.name,
+      API_CONFIG.DEFAULT_LEAGUE,
+      year
+    );
   });
   container.appendChild(card);
 }
@@ -131,7 +136,6 @@ async function fetchTeamStatistics(teamId, leagueId, season) {
     url.searchParams.set("team", teamId);
     url.searchParams.set("league", validLeagueId);
     url.searchParams.set("season", validSeason);
-    console.log("Fetching statistics from:", url.toString());
     const response = await fetch(url, {
       headers: {
         "x-apisports-key": API_CONFIG.API_KEY,
@@ -141,7 +145,9 @@ async function fetchTeamStatistics(teamId, leagueId, season) {
     if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const data = await response.json();
     if (!(data == null ? void 0 : data.response))
-      throw new Error(`No statistics available for team ${teamId} in ${validSeason}`);
+      throw new Error(
+        `No statistics available for team ${teamId} in ${validSeason}`
+      );
     displayTeamStats(data.response);
   } catch (error) {
     console.error("Fetch error:", error);
