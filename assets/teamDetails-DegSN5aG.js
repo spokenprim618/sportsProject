@@ -44,7 +44,7 @@ const API_CONFIG = {
   AVAILABLE_SEASONS: [2021, 2022, 2023]
 };
 function selectYear(year) {
-  window.location.href = `/sportsProject/team.html?year=${year}`;
+  window.location.href = `./team.html?year=${year}`;
 }
 function handleTeamClick(teamId, teamName, leagueId, season) {
   const parsedLeagueId = parseInt(leagueId);
