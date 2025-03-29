@@ -44,7 +44,7 @@ const API_CONFIG = {
   AVAILABLE_SEASONS: [2021, 2022, 2023]
 };
 function selectYear(year) {
-  window.location.href = `/sportsProject/team.html?year=${year}`;
+  window.location.href = `/sportsProject/src/team.html?year=${year}`;
 }
 function handleTeamClick(teamId, teamName, leagueId, season) {
   const parsedLeagueId = parseInt(leagueId);
@@ -57,7 +57,7 @@ function handleTeamClick(teamId, teamName, leagueId, season) {
     leagueId: validLeagueId,
     season: validSeason
   });
-  window.location.href = `/sportsProject/team-details.html?${params.toString()}`;
+  window.location.href = `/sportsProject/src/team-details.html?${params.toString()}`;
 }
 async function fetchTeams(year) {
   const container = document.getElementById("teams-container");
@@ -103,7 +103,7 @@ function loadTeamDetails() {
   const leagueId = params.get("leagueId") || API_CONFIG.DEFAULT_LEAGUE;
   const season = params.get("season") || API_CONFIG.DEFAULT_SEASON;
   if (!teamId || !teamName) {
-    window.location.href = "/sportsProject/team.html";
+    window.location.href = "/sportsProject/src/team.html";
     return;
   }
   const container = document.createElement("div");
@@ -117,7 +117,7 @@ function loadTeamDetails() {
         <p>Loading ${season} season statistics...</p>
       </div>
     </div>
-    <a href="/sportsProject/team.html" class="button">Back to teams</a>
+    <a href="/sportsProject/src/team.html" class="button">Back to teams</a>
   `;
   document.body.appendChild(container);
   fetchTeamStatistics(teamId, leagueId, season);
