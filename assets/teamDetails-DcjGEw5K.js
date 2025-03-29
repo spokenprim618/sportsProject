@@ -35,10 +35,9 @@
     fetch(link.href, fetchOpts);
   }
 })();
-const API_KEY = "07dda17efb811c96aba7340d0afd5519";
 const API_CONFIG = {
   BASE_URL: "https://v3.football.api-sports.io",
-  API_KEY,
+  API_KEY: void 0,
   DEFAULT_LEAGUE: 39,
   DEFAULT_SEASON: 2023,
   AVAILABLE_SEASONS: [2021, 2022, 2023]
